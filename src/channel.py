@@ -11,4 +11,4 @@ class Channel:
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        print(self.print_info)
+        print(self.channel_id)
