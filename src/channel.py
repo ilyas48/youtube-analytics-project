@@ -57,9 +57,12 @@ class Channel:
 
     def __gt__(self, other):
         """
-
+        Метод для сравнения "Больше" подписчиков канала
         """
         return self.subscribers_count > other.subscribers_count
 
     def __le__(self, other):
+        """
+        Метод для сравнения "Больше или равно" подписчиков канала
+        """
         return self.subscribers_count <= other.subscribers_count
