@@ -16,6 +16,7 @@ class Channel:
         self.url = r'https://www.youtube.com/channel/' + self.__channel_id
         self.video_count = self.channel_json_info['items'][0]['statistics']['videoCount']
         self.channel_view_count = self.channel_json_info['items'][0]['statistics']['viewCount']
+        self.subscribers_count = int(self.channel_json_info['items'][0]['statistics']['subscriberCount'])
 
     def get_channel_json_info(self):
         """Метод получения информации о канале в формате json"""
@@ -36,3 +37,29 @@ class Channel:
         with open(f'{filename}', 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=2, ensure_ascii=False)
 
+    def __str__(self):
+        """
+        Выводит информацию о канале
+        """
+        return f'{self.title} ({self.url})'
+
+    def __add__(self, other):
+        """
+        Сложение количество подписчиков канала
+        """
+        return self.subscribers_count + other.subscribers_count
+
+    def __sub__(self, other):
+        """
+        Метод для вычитания подписчиков канала
+        """
+        return self.subscribers_count - other.subscribers_count
+
+    def __gt__(self, other):
+        """
+
+        """
+        return self.subscribers_count > other.subscribers_count
+
+    def __le__(self, other):
+        return self.subscribers_count <= other.subscribers_count
